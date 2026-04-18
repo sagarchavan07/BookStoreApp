@@ -1,4 +1,4 @@
-package com.example.userservice1.dto;
+package com.example.cartservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

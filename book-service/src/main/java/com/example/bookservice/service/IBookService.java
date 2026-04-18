@@ -1,8 +1,8 @@
 package com.example.bookservice.service;
 
 
-import com.example.bookservice.dto.BookDTO;
 import com.example.bookservice.model.Book;
+import com.example.commonapi.dto.BookDTO;
 
 import java.util.List;
 

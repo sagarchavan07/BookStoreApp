@@ -1,7 +1,7 @@
 package com.example.userservice1.service;
 
 
-import com.example.userservice1.dto.UserDTO;
+import com.example.commonapi.dto.UserDTO;
 import com.example.userservice1.model.UserData;
 
 import java.util.List;

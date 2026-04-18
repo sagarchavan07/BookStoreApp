@@ -1,12 +1,12 @@
 package com.example.bookservice.service;
 
-import com.example.bookservice.dto.BookDTO;
 import com.example.bookservice.email.EmailService;
 import com.example.bookservice.exception.BookStoreException;
 import com.example.bookservice.model.Book;
 import com.example.bookservice.model.UserData;
 import com.example.bookservice.repository.BookRepository;
 import com.example.bookservice.utility.TokenUtility;
+import com.example.commonapi.dto.BookDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

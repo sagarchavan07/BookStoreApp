@@ -1,46 +1,85 @@
 # 📚 BookStore Backend Application
 
-A backend-only BookStore application built using Spring Boot and JPA. This project provides REST APIs to manage books, users, and orders for an online bookstore system.
+A **microservices-based backend system** for an online BookStore, built using **Spring Boot, Spring Cloud, and JPA**.
+The application provides REST APIs for managing books, users, carts, and orders in a **distributed architecture**.
 
 ---
 
 ## 🚀 Features
 
-- User Registration & Authentication APIs
-- Book Management (Add, Update, Delete, Fetch)
-- Search Books API
-- Order Management APIs
-- RESTful API Design
+* User Registration & Authentication APIs (JWT-based)
+* Book Management (Add, Update, Delete, Fetch)
+* Cart Management APIs
+* Order Processing APIs
+* Inter-service communication using OpenFeign
+* Service discovery using Eureka
+* RESTful API design
+
+---
+
+## 🏗️ Architecture
+
+This project follows a **microservices architecture** where each module is an independent service.
+
+### 🔧 Services
+
+* **eureka-server** → Service registry
+* **user-service1** → User management & authentication
+* **book-service** → Book catalog management
+* **cart-service** → Cart operations
+* **order-service** → Order processing
+* **common-api** → Shared DTOs and contracts
 
 ---
 
 ## 🏗️ Tech Stack
 
 ### Backend
-- Java
-- Spring Boot
-- Spring Data JPA
-- Hibernate
+
+* Java 21
+* Spring Boot 3
+* Spring Cloud (Eureka, OpenFeign)
+* Spring Data JPA
+* Hibernate
 
 ### Database
-- MySQL / Oracle
+
+* MySQL / H2
+
+### Security
+
+* JWT (Auth0)
 
 ### Tools
-- Maven
-- Git & GitHub
+
+* Maven
+* Git & GitHub
 
 ---
 
 ## 📂 Project Structure
 
-BookStore/  
-│── src/  
-│   ├── main/  
-│   │   ├── java/        # Controllers, Services, Repositories, Entities  
-│   │   ├── resources/   # application.properties  
-│  
-│── pom.xml  
-│── README.md
+```id="code1"
+BookStoreApp/
+│
+├── book-service/
+├── cart-service/
+├── order-service/
+├── user-service1/
+├── common-api/
+├── eureka-server/
+│
+├── pom.xml        # Container project (not aggregator)
+└── README.md
+```
+
+---
+
+## ⚠️ Important Note
+
+* Each service is an **independent Spring Boot application**
+* Root `pom.xml` is used only as a **container project**
+* Services must be **built and run individually**
 
 ---
 
@@ -48,66 +87,110 @@ BookStore/
 
 ### 1. Clone the Repository
 
-git clone https://github.com/sagarchavan07/BookStore.git  
-cd BookStore
+```bash id="code2"
+git clone https://github.com/sagarchavan07/BookStoreApp.git
+cd BookStoreApp
+```
 
 ---
 
 ### 2. Configure Database
 
-Update application.properties:
+Update `application.properties` in each service:
 
-spring.datasource.url=jdbc:mysql://localhost:3306/bookstore  
-spring.datasource.username=root  
+```properties id="code3"
+spring.datasource.url=jdbc:mysql://localhost:3306/bookstore
+spring.datasource.username=root
 spring.datasource.password=your_password
 
-spring.jpa.hibernate.ddl-auto=update  
+spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
+```
 
 ---
 
-### 3. Build the Project
+### 3. Build the Services
 
-mvn clean install
+Each service should be built individually:
+
+```bash id="code4"
+cd eureka-server && mvn clean install
+cd ../user-service1 && mvn clean install
+cd ../book-service && mvn clean install
+cd ../cart-service && mvn clean install
+cd ../order-service && mvn clean install
+```
 
 ---
 
 ### 4. Run the Application
 
-mvn spring-boot:run
+Start services in order:
+
+1. Eureka Server
+2. user-service1
+3. book-service
+4. cart-service
+5. order-service
 
 ---
 
-### 5. Access APIs
+### 5. Access Services
 
-http://localhost:8080/
+* Eureka Dashboard:
+  http://localhost:8761
+
+* APIs exposed via respective services (ports configured per service)
 
 ---
 
 ## 🔗 Sample API Endpoints
 
-- GET /books → Get all books
-- GET /books/{id} → Get book by ID
-- POST /books → Add new book
-- PUT /books/{id} → Update book
-- DELETE /books/{id} → Delete book
+### Book Service
+
+* GET /books → Get all books
+* GET /books/{id} → Get book by ID
+* POST /books → Add new book
+* PUT /books/{id} → Update book
+* DELETE /books/{id} → Delete book
+
+### Order Service
+
+* POST /orders → Create order
+* GET /orders/{id} → Get order details
+
+---
+
+## 🔄 Inter-Service Communication
+
+* Implemented using **OpenFeign**
+* Services communicate via **Eureka service discovery**
+* No hardcoded URLs between services
+
+---
+
+## 🔐 Security
+
+* JWT-based authentication using `java-jwt`
+* Token-based request validation across services
 
 ---
 
 ## 🧪 Future Enhancements
 
-- Spring Security (JWT Authentication)
-- Swagger API Documentation
-- Pagination & Sorting
-- Global Exception Handling
-- Docker Deployment
+* API Gateway (Spring Cloud Gateway)
+* Centralized Configuration Server
+* Resilience & Fault Tolerance (Resilience4j)
+* Swagger API Documentation
+* Docker Deployment
 
 ---
 
-## ⚠️ Known Issues
+## ⚠️ Known Limitations
 
-- Basic validation
-- No authentication/authorization (if not implemented)
+* No API Gateway (currently in development)
+* No centralized configuration (in progress)
+* Limited validation and exception handling
 
 ---
 
@@ -129,7 +212,7 @@ This project is for learning and demonstration purposes.
 
 ## 👨‍💻 Author
 
-Sagar Chavan  
+Sagar Chavan
 GitHub: https://github.com/sagarchavan07
 
 ---

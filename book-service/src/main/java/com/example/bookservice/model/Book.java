@@ -1,6 +1,6 @@
 package com.example.bookservice.model;
 
-import com.example.bookservice.dto.BookDTO;
+import com.example.commonapi.dto.BookDTO;
 import jakarta.persistence.*;
 
 @Entity

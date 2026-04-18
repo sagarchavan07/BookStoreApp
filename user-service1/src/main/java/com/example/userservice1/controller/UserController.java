@@ -1,7 +1,8 @@
 package com.example.userservice1.controller;
 
-import com.example.userservice1.dto.ResponseDTO;
-import com.example.userservice1.dto.UserDTO;
+import com.example.commonapi.api.IUserController;
+import com.example.commonapi.dto.ResponseDTO;
+import com.example.commonapi.dto.UserDTO;
 import com.example.userservice1.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/bookstore/user")
 @CrossOrigin
-public class UserController {
+public class UserController implements IUserController {
     @Autowired
     IUserService userService;
 

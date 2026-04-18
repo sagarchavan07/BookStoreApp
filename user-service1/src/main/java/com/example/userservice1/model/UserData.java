@@ -1,7 +1,7 @@
 package com.example.userservice1.model;
 
 
-import com.example.userservice1.dto.UserDTO;
+import com.example.commonapi.dto.UserDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 

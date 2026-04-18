@@ -1,10 +1,10 @@
-package com.example.userservice1.dto;
+package com.example.commonapi.dto;
 
-import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import jakarta.validation.constraints.Email;
 import java.time.LocalDate;
 
 @Data

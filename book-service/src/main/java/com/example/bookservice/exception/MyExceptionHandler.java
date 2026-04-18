@@ -1,6 +1,6 @@
 package com.example.bookservice.exception;
 
-import com.example.bookservice.dto.ResponseDTO;
+import com.example.commonapi.dto.ResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

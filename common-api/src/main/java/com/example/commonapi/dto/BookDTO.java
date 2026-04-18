@@ -1,4 +1,4 @@
-package com.example.bookservice.dto;
+package com.example.commonapi.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

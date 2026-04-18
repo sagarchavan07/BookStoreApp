@@ -1,6 +1,6 @@
 package com.example.userservice1.service;
 
-import com.example.userservice1.dto.UserDTO;
+import com.example.commonapi.dto.UserDTO;
 import com.example.userservice1.exception.BookStoreException;
 import com.example.userservice1.model.UserData;
 import com.example.userservice1.repository.UserRepository;
